@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import net.datastructures.Position;
+import src.MyDecorator;
 import support.graph.CS16Edge;
 import support.graph.CS16Vertex;
 import support.graph.Graph;
@@ -64,6 +66,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
     // Sets to store the vertices and edges of your graph
     private Set<CS16Vertex<V>> _vertices;
     private Set<CS16Edge<V>> _edges;
+    private ArrayList<Integer> _adjIndices;
+	private MyDecorator<CS16Vertex<V>, Integer> _adjDecorator;
+	
 
     /**
      * Constructor for your Graph, where among other things, you will most
@@ -74,6 +79,14 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
     public AdjacencyMatrixGraph() {
         _adjMatrix = this.makeEmptyEdgeArray();
         // fill in the rest here!
+		_vertices = new HashSet<CS16Vertex<V>>();
+		_edges = new HashSet<CS16Edge<V>>();
+		_adjIndices = new ArrayList<Integer>();
+		_adjDecorator = new MyDecorator<CS16Vertex<V>, Integer>();
+		// filling the array
+		for (int i = 0; i < MAX_VERTICES; i++) {
+			_adjIndices.add(i);
+		}
     }
 
     /**
